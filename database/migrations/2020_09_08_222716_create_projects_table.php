@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('image');
+            $table->string('image_path');
             $table->string('category');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
