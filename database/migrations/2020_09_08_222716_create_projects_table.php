@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('image_path');
+            $table->string('image');
             $table->string('category');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
@@ -32,5 +32,8 @@ class CreateProjectsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('projects');
+        Schema::table('projects', function(Blueprint $table){
+            $table->dropColumn('image');
+        });
     }
 }

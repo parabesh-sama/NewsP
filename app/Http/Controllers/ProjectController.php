@@ -41,11 +41,16 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:5048',
             'category' => 'required'
         ]);
+        $newImageName = time() . $request->name . '.' . $request->image->extension();
+    
+        $request->image->move(public_path('images'), $newImageName);
 
         Project::create($request->all());
+
+
 
         return redirect()->route('projects.index')
             ->with('success', 'News Added successfully.');

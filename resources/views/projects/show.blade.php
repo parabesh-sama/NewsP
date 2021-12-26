@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.show')
+
 
 
 @section('content')
@@ -18,19 +19,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                {{ $project->title }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Description:</strong>
-                {{ $project->description }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Images:</strong>
-                {{ $project->image }}
+                <strong>{{ $project->title }} </strong>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -39,11 +28,28 @@
                 {{ $project->category }}
             </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Date Created:</strong>
+                <strong>Date:</strong>
                 {{ date_format($project->created_at, 'jS M Y') }}
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>News Desciption:</strong><br>
+                {{ $project->description }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Image</strong>
+                <img src="{{ asset('images/'.$project->image) }}" 
+                class="w-10/12 mb-8 shadow-xl"/>
+            </div>
+        </div>
+       
+        
     </div>
 @endsection
